@@ -1,0 +1,171 @@
+<!-- exercise 3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Calculations</title>
+</head>
+<body>
+    <h1>JavaScript Calculations</h1>
+    <p>Check the browser's console (F12 -> Console) for the output of the script!</p>
+    
+    The JavaScript code will be placed here -->
+    <!-- <script>
+        // Given equation: y = 2x - 2
+        let x1 = 2, y1 = 2;
+        let x2 = 6, y2 = 10;
+
+        // Slope formula: m = (y2 - y1) / (x2 - x1)
+        let slope = (y2 - y1) / (x2 - x1);
+        console.log("Slope between points (2, 2) and (6, 10): " + slope);
+
+        // Finding x-intercept (set y = 0 in y = 2x - 2)
+        let xIntercept = 2 / 2; // x = 1
+        let yIntercept = -2; // Given directly in the equation
+
+        console.log("X-Intercept: " + xIntercept);
+        console.log("Y-Intercept: " + yIntercept);
+
+        // Compare the slope of the line (2) with a rectangle's horizontal sides (0)
+        console.log("Comparison: Slope of rectangle's horizontal sides (0) vs slope of line (2)");
+
+        // Function to calculate y = x² + 6x + 9
+        function calculateY(x) {
+            return x * x + 6 * x + 9;
+        }
+
+        // Finding x when y = 0
+        for (let x = -5; x <= 5; x++) {
+            let y = calculateY(x);
+            console.log(`For x = ${x}, y = ${y}`);
+            if (y === 0) {
+                console.log(`x = ${x} gives y = 0`);
+                break;
+            }
+        }
+    </script>
+</body>
+</html> --> 
+
+
+<!-- exercise 4 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Prompt Example</title>
+</head>
+<body>
+    <h1>JavaScript User Input Example</h1>
+    <p>Check the browser's console (F12 -> Console) for results.</p>
+
+    <script>
+        // Prompt the user to enter hours and rate per hour
+        let hours = parseFloat(prompt("Enter hours worked:"));
+        let rate = parseFloat(prompt("Enter rate per hour:"));
+
+        // Calculate weekly pay
+        let weeklyPay = hours * rate;
+        console.log("Your weekly earning is " + weeklyPay);
+
+        // Prompt the user to enter their name
+        let fullName = prompt("Enter your full name:");
+        let nameLength = fullName.length;
+
+        // Check if the name length is greater than 7
+        if (nameLength > 7) {
+            console.log("Your name is long.");
+        } else {
+            console.log("Your name is short.");
+        }
+
+        // Define first and last name variables
+        let firstName = "Doctors";
+        let lastName = "Strange";
+
+        // Compare the length of first and last names
+        if (firstName.length > lastName.length) {
+            console.log("Your first name, " + firstName + " is longer than your family name, " + lastName);
+        } else if (firstName.length < lastName.length) {
+            console.log("Your family name, " + lastName + " is longer than your first name, " + firstName);
+        } else {
+            console.log("Your first name, " + firstName + " is of the same length as your family name, " + lastName);
+        }
+    </script>
+</body>
+</html>
+
+<!-- exercise 5
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification</title>
+</head>
+<body>
+    <h1>Age Verification</h1>
+    <p id="result">Please enter your birth year in the prompt.</p>
+
+    <script>
+        // Prompt the user to enter their birth year
+        let birthYear = parseInt(prompt("Enter your birth year:"));
+
+        // Get the current year
+        let currentYear = new Date().getFullYear();
+
+        // Calculate the user's age
+        let age = currentYear - birthYear;
+
+        let message = "";
+
+        // Check if the user is 18 or older
+        if (age >= 18) {
+            message = "You are " + age + ". You are old enough to drive.";
+        } else {
+            let yearsToWait = 18 - age;
+            message = "You are " + age + ". You will be allowed to drive after " + yearsToWait + " years.";
+        }
+
+        // Display result on the page
+        document.getElementById("result").innerText = message;
+
+        // Also log to the console
+        console.log(message);
+    </script>
+</body>
+</html> -->
+
+
+<!-- exercise 8 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Format Example</title>
+</head>
+<body>
+    <script>
+        function formatDateTime(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+
+            return `${year}-${month}-${day} ${hours}:${minutes}`;
+        }
+
+        console.log(formatDateTime(new Date()));
+    </script>
+</body>
+</html>
+
+
+

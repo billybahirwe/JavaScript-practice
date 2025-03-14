@@ -1,0 +1,195 @@
+<!-- HTML Canvas
+What is HTML Canvas?
+The <canvas> element in HTML is used to draw graphics using JavaScript. It allows developers to create dynamic, interactive visuals such as graphs, animations, game graphics, image manipulation, and more.
+
+How Does HTML Canvas Work?
+Define a <canvas> Element
+The <canvas> tag creates a blank area where graphics can be drawn.
+Access the Canvas Using JavaScript
+A JavaScript script is used to obtain a reference to the canvas.
+Get the Drawing Context
+The drawing context (2d for 2D graphics) provides methods to draw on the canvas.
+Use JavaScript to Draw on the Canvas
+We can draw shapes, lines, images, and text.
+Step-by-Step Example
+Let's go through a complete example that explains each step in detail.
+
+Conclusion
+The HTML <canvas> is a powerful tool for creating graphics using JavaScript. This guide covered how to: ✔ Draw shapes (rectangles, circles, lines)
+✔ Add text
+✔ Draw images
+✔ Create animations -->
+
+<!-- Step 1: Create the Canvas Element in HTML
+
+
+<canvas id="myCanvas" width="500" height="400" style="border:1px solid black;">
+
+</canvas>
+The id="myCanvas" gives the canvas an identifier.
+The width="500" and height="400" set the canvas size.
+The style="border:1px solid black;" adds a border around the canvas.
+Step 2: Access the Canvas in JavaScript
+
+
+
+// Get the canvas element by ID
+let canvas = document.getElementById("myCanvas");
+
+// Get the drawing context (2D)
+let ctx = canvas.getContext("2d");
+document.getElementById("myCanvas") gets the <canvas> element.
+getContext("2d") returns a drawing context that allows drawing on the canvas.
+Step 3: Drawing Basic Shapes
+Drawing a Rectangle
+js
+
+
+ctx.fillStyle = "blue"; // Set fill color
+ctx.fillRect(50, 50, 200, 100); // Draw filled rectangle (x, y, width, height)
+fillStyle = "blue" sets the color.
+fillRect(50, 50, 200, 100) draws a rectangle at (50,50) with width 200 and height 100.
+Drawing a Border Around a Rectangle
+
+
+ctx.strokeStyle = "red"; // Set border color
+ctx.lineWidth = 5; // Set border thickness
+ctx.strokeRect(50, 50, 200, 100); // Draw rectangle outline
+Step 4: Drawing Lines
+js
+
+
+ctx.beginPath(); // Start a new path
+ctx.moveTo(300, 100); // Move to (300,100)
+ctx.lineTo(400, 300); // Draw a line to (400,300)
+ctx.lineTo(200, 300); // Draw another line to (200,300)
+ctx.closePath(); // Close the path
+ctx.strokeStyle = "green"; // Set line color
+ctx.lineWidth = 4; // Set line width
+ctx.stroke(); // Draw the line
+beginPath() starts a new drawing path.
+moveTo(x, y) moves the pen to a position.
+lineTo(x, y) draws a line to a point.
+closePath() closes the shape.
+stroke() actually draws the lines.
+Step 5: Drawing a Circle
+js
+
+
+ctx.beginPath();
+ctx.arc(150, 250, 50, 0, 2 * Math.PI); // Draws a circle at (150,250) with radius 50
+ctx.fillStyle = "purple"; // Fill color
+ctx.fill(); // Fill the circle
+ctx.stroke(); // Draw outline
+arc(x, y, radius, startAngle, endAngle) draws a circle.
+2 * Math.PI makes a full circle.
+Step 6: Adding Text
+js
+
+
+ctx.font = "30px Arial"; // Set font size and type
+ctx.fillStyle = "black"; // Text color
+ctx.fillText("Hello Canvas!", 120, 50); // Draw text at (120,50)
+font = "30px Arial" sets the font size and style.
+fillText("text", x, y) draws text on the canvas.
+Step 7: Adding an Image
+js
+
+
+let img = new Image(); // Create image object
+img.src = "https://via.placeholder.com/150"; // Set source (URL)
+img.onload = function () { // Wait for image to load
+    ctx.drawImage(img, 250, 150, 150, 100); // Draw image at (250,150) with width 150, height 100
+};
+new Image() creates an image object.
+onload ensures the image is fully loaded before drawing.
+Step 8: Adding Animation
+Let's create an animation where a circle moves across the canvas.
+
+js
+
+
+let x = 0;
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+    ctx.beginPath();
+    ctx.arc(x, 200, 30, 0, 2 * Math.PI);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    x += 2; // Move the circle right
+    requestAnimationFrame(animate); // Loop animation
+}
+animate(); // Start animation
+clearRect(0, 0, canvas.width, canvas.height) clears the screen before redrawing.
+requestAnimationFrame(animate) keeps calling animate() to create smooth movement. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Canvas Example</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="400" style="border:1px solid black;"></canvas>
+
+    <script>
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+
+        // Draw filled rectangle
+        ctx.fillStyle = "blue";
+        ctx.fillRect(50, 50, 200, 100);
+
+        // Draw rectangle border
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 5;
+        ctx.strokeRect(50, 50, 200, 100);
+
+        // Draw line
+        ctx.beginPath();
+        ctx.moveTo(300, 100);
+        ctx.lineTo(400, 300);
+        ctx.lineTo(200, 300);
+        ctx.closePath();
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        // Draw circle
+        ctx.beginPath();
+        ctx.arc(150, 250, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = "purple";
+        ctx.fill();
+        ctx.stroke();
+
+        // Add text
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("Hello Canvas!", 120, 50);
+
+        // Load and draw image
+        let img = new Image();
+        img.src = "https://via.placeholder.com/150";
+        img.onload = function () {
+            ctx.drawImage(img, 250, 150, 150, 100);
+        };
+
+        // Animate moving circle
+        let x = 0;
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(x, 200, 30, 0, 2 * Math.PI);
+            ctx.fillStyle = "orange";
+            ctx.fill();
+            x += 2;
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Generator</title>
+</head>
+<body>
+    <h1>😂 Random Joke</h1>
+    <p id="joke">Click the button to get a joke!</p>
+    <button onclick="getJoke()">Get Joke</button>
+
+    <script>
+        function getJoke() {
+            fetch("https://official-joke-api.appspot.com/random_joke")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("joke").textContent = data.setup + " - " + data.punchline;
+                })
+                .catch(error => console.log("❌ Error:", error));
+        }
+    </script>
+</body>
+</html>
